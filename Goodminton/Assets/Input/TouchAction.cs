@@ -93,8 +93,8 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
             ""id"": ""b1789a7c-df4e-4a99-b9cf-8fe301043d01"",
             ""actions"": [
                 {
-                    ""name"": ""Touch"",
-                    ""type"": ""PassThrough"",
+                    ""name"": ""TouchPosition"",
+                    ""type"": ""Value"",
                     ""id"": ""fe4cc0f1-7f6f-497e-a429-cdeb15991b77"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -106,11 +106,11 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c512e157-e595-41d9-b385-e1866002f665"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Touch"",
+                    ""action"": ""TouchPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -121,7 +121,7 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
 }");
         // General
         m_General = asset.FindActionMap("General", throwIfNotFound: true);
-        m_General_Touch = m_General.FindAction("Touch", throwIfNotFound: true);
+        m_General_TouchPosition = m_General.FindAction("TouchPosition", throwIfNotFound: true);
     }
 
     ~@TouchAction()
@@ -202,7 +202,7 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
     // General
     private readonly InputActionMap m_General;
     private List<IGeneralActions> m_GeneralActionsCallbackInterfaces = new List<IGeneralActions>();
-    private readonly InputAction m_General_Touch;
+    private readonly InputAction m_General_TouchPosition;
     /// <summary>
     /// Provides access to input actions defined in input action map "General".
     /// </summary>
@@ -215,9 +215,9 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
         /// </summary>
         public GeneralActions(@TouchAction wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "General/Touch".
+        /// Provides access to the underlying input action "General/TouchPosition".
         /// </summary>
-        public InputAction @Touch => m_Wrapper.m_General_Touch;
+        public InputAction @TouchPosition => m_Wrapper.m_General_TouchPosition;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -244,9 +244,9 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GeneralActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GeneralActionsCallbackInterfaces.Add(instance);
-            @Touch.started += instance.OnTouch;
-            @Touch.performed += instance.OnTouch;
-            @Touch.canceled += instance.OnTouch;
+            @TouchPosition.started += instance.OnTouchPosition;
+            @TouchPosition.performed += instance.OnTouchPosition;
+            @TouchPosition.canceled += instance.OnTouchPosition;
         }
 
         /// <summary>
@@ -258,9 +258,9 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
         /// <seealso cref="GeneralActions" />
         private void UnregisterCallbacks(IGeneralActions instance)
         {
-            @Touch.started -= instance.OnTouch;
-            @Touch.performed -= instance.OnTouch;
-            @Touch.canceled -= instance.OnTouch;
+            @TouchPosition.started -= instance.OnTouchPosition;
+            @TouchPosition.performed -= instance.OnTouchPosition;
+            @TouchPosition.canceled -= instance.OnTouchPosition;
         }
 
         /// <summary>
@@ -302,11 +302,11 @@ public partial class @TouchAction: IInputActionCollection2, IDisposable
     public interface IGeneralActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Touch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "TouchPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnTouch(InputAction.CallbackContext context);
+        void OnTouchPosition(InputAction.CallbackContext context);
     }
 }

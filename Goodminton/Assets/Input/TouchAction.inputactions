@@ -7,8 +7,8 @@
             "id": "b1789a7c-df4e-4a99-b9cf-8fe301043d01",
             "actions": [
                 {
-                    "name": "Touch",
-                    "type": "PassThrough",
+                    "name": "TouchPosition",
+                    "type": "Value",
                     "id": "fe4cc0f1-7f6f-497e-a429-cdeb15991b77",
                     "expectedControlType": "",
                     "processors": "",
@@ -20,11 +20,11 @@
                 {
                     "name": "",
                     "id": "c512e157-e595-41d9-b385-e1866002f665",
-                    "path": "<Touchscreen>/primaryTouch",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "TouchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
